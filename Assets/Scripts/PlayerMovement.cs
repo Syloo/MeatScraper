@@ -4,26 +4,35 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float breakAcceleration; // >= 0 and < movementSpeed
     public Collider2D groundCollider;
+    public float isRagdolling;
     public Transform mainCamera;
     public Transform playerModel;
-    public Rigidbody2D rb;
+    public float movementDrag;
     public float movementSpeed;
-    public float movementSpeedY;
+    public float jumpVelocity;
     
     private bool isJumping;
+    private Rigidbody2D rb;
     private float velocityX;
     
     // Start is called before the first frame update
     private void Start()
     {
         isJumping = false;
+        isRagdolling = 0f;
+        rb = GetComponent<Rigidbody2D>();
         velocityX = 0f;
+
+        GameManager.getInstance().setPlayer(this);
     }
 
     // Update is called once per physics tick
     private void FixedUpdate()
     {
+        bool isGrounded = groundCollider.IsTouchingLayers(Physics2D.AllLayers);
+
         // Character orientation
         if (velocityX != 0f)
         {
@@ -32,14 +41,30 @@ public class PlayerMovement : MonoBehaviour
             playerModel.localScale = flippedScale;
         }
 
+
         // Horizontal movement
-        if (Mathf.Abs(rb.velocity.x) > movementSpeed) // influenced by explosion
+        if (isRagdolling >= 1f)
         {
-            if (velocityX * rb.velocity.x < 0f) // steering against direction of movement
+            isRagdolling += Time.fixedDeltaTime;
+            if (isRagdolling >= 1.2f && isGrounded)
             {
-                velocityX = 0.9f * rb.velocity.x;
+                isRagdolling = 0f;
             }
-            else
+        }
+        if (isRagdolling >= 1f) // Influenced by explosion
+        {
+            if (Mathf.Abs(rb.velocity.x) > movementSpeed)
+            {
+                if (velocityX * rb.velocity.x < 0f) // Steering against direction of movement
+                {
+                    velocityX = Mathf.Sign(rb.velocity.x) * (Mathf.Abs(rb.velocity.x) - Time.fixedDeltaTime * breakAcceleration);
+                }
+                else // Let it ragdoll
+                {
+                    velocityX = rb.velocity.x;
+                }
+            }
+            else if (velocityX == 0f || isRagdolling < 1.2f) // Let it ragdoll if no explicit input
             {
                 velocityX = rb.velocity.x;
             }
@@ -50,9 +75,9 @@ public class PlayerMovement : MonoBehaviour
         if (isJumping)
         {
             isJumping = false;
-            if (groundCollider.IsTouchingLayers(Physics2D.AllLayers))
+            if (isGrounded)
             {
-                velocityY = movementSpeedY;
+                velocityY = jumpVelocity;
             }
         }
 
@@ -64,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         velocityX = movementSpeed * Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Jump"))
         {
             isJumping = true;
         }
