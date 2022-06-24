@@ -7,6 +7,7 @@ public class GameManager
     private static GameManager instance = null;
 
     private PlayerMovement player;
+    private Collider2D playerCollider;
     private Rigidbody2D playerRB;
 
     private GameManager()
@@ -23,14 +24,25 @@ public class GameManager
         return instance;
     }
 
+    public Collider2D getPlayerCollider()
+    {
+        return playerCollider;
+    }
+
     public Rigidbody2D getPlayerRB()
     {
         return playerRB;
     }
 
+    public bool isPlayerJumping()
+    {
+        return player.isJumping > 0f;
+    }
+
     public void setPlayer(PlayerMovement player)
     {
         this.player = player;
+        playerCollider = player.GetComponent<Collider2D>();
         playerRB = player.GetComponent<Rigidbody2D>();
     }
 
