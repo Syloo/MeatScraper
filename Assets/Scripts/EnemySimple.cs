@@ -52,6 +52,16 @@ public class EnemySimple : MonoBehaviour
         rb.velocity = new Vector2(velocityX, rb.velocity.y);
     }
 
+    // Enemy touched something
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6) // Got hit by projectile
+        {
+            Debug.Log("Hit");
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     private void Update()
     {

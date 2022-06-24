@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public float explosionForce = 1500f;
     public float explosionFullForceRadius = 1f; // Has to be greater than zero and lower than explosionRadius
     public float explosionRadius = 10f;
+    public bool isPlayerVelocityIgnored = true;
     public bool isForceMoreDistributed = true;
     public float speed = 30f;
 
@@ -48,7 +49,11 @@ public class Projectile : MonoBehaviour
                 }
                 // Debug.Log("Force: " + force + ", distance: " + distance);
 
-                if (GameManager.getInstance().isPlayerJumping())
+                if (isPlayerVelocityIgnored)
+                {
+                    playerRB.velocity = new Vector2(0f, 0f);
+                }
+                else if (GameManager.getInstance().isPlayerJumping())
                 {
                     playerRB.velocity = new Vector2(playerRB.velocity.x, 0f); // Do not add jumping velocity and explosion force
                 }

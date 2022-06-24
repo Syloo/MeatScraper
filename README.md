@@ -26,4 +26,5 @@ While playing in the editor, left click to hide your cursor and press escape to 
 - **Explosion Full Force Radius:** Radius around the explosion in which the full force is applied
 - **Explosion Radius:** Maximum range influenced by an explosion
 - **Is Force More Distributed:** Whether a more gentle explosion force decline is used instead of the realistic one
+- **Is Player Velocity Ignored** Whether the explosion force replaces player velocity instead of adding to it
 - **Speed:** Velocity of the projectile
