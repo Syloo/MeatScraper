@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float breakAcceleration; // >= 0 and < movementSpeed
+    public float breakAcceleration;
+    public float jumpVelocity;
+    public float movementSpeed;
+    public float ragdollDuration = 0.2f;
+
     public Collider2D groundCollider;
-    public float isRagdolling;
     public Transform mainCamera;
     public Transform playerModel;
-    public float movementDrag;
-    public float movementSpeed;
-    public float jumpVelocity;
+
+    public float isJumping;
+    public float isRagdolling;
     
-    private bool isJumping;
+    private bool isJumpPressed;
     private Rigidbody2D rb;
     private float velocityX;
     
     // Start is called before the first frame update
     private void Start()
     {
-        isJumping = false;
+        isJumpPressed = false;
+        isJumping = 0f;
         isRagdolling = 0f;
         rb = GetComponent<Rigidbody2D>();
         velocityX = 0f;
@@ -46,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         if (isRagdolling >= 1f)
         {
             isRagdolling += Time.fixedDeltaTime;
-            if (isRagdolling >= 1.2f && isGrounded)
+            if (isRagdolling >= 1f + ragdollDuration && isGrounded)
             {
                 isRagdolling = 0f;
             }
@@ -64,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
                     velocityX = rb.velocity.x;
                 }
             }
-            else if (velocityX == 0f || isRagdolling < 1.2f) // Let it ragdoll if no explicit input
+            else if (velocityX == 0f || isRagdolling < 1f + ragdollDuration) // Let it ragdoll if no explicit input
             {
                 velocityX = rb.velocity.x;
             }
@@ -72,11 +76,16 @@ public class PlayerMovement : MonoBehaviour
 
         // Vertical movement
         float velocityY = rb.velocity.y;
-        if (isJumping)
+        if (isJumping > 0f)
         {
-            isJumping = false;
+            isJumping -= Time.fixedDeltaTime;
+        }
+        if (isJumpPressed)
+        {
+            isJumpPressed = false;
             if (isGrounded)
             {
+                isJumping = 0.5f;
                 velocityY = jumpVelocity;
             }
         }
@@ -91,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         velocityX = movementSpeed * Input.GetAxis("Horizontal");
         if (Input.GetButtonDown("Jump"))
         {
-            isJumping = true;
+            isJumpPressed = true;
         }
     }
 }

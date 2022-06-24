@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     public float cooldown;
+
     public RectTransform crosshair;
     public Transform gun;
     public Camera mainCamera;

@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public float explosionForce = 1500f;
+    public float explosionFullForceRadius = 1f; // Has to be greater than zero and lower than explosionRadius
+    public float explosionRadius = 10f;
+    public bool isForceMoreDistributed = true;
+    public float speed = 30f;
+
     public GameObject explosionEffect;
-    public float explosionForce = 10f;
-    public float speed = 20f;
+
 
     // Start is called before the first frame update
     private void Start()
@@ -20,10 +25,33 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.layer != 3) // Ignore collisions with player
         {
             Rigidbody2D playerRB = GameManager.getInstance().getPlayerRB();
-            Vector2 toPlayer = playerRB.position - new Vector2(transform.position.x, transform.position.y);
-            if (toPlayer.magnitude < 10f)
+            Collider2D playerCollider = GameManager.getInstance().getPlayerCollider();
+            Vector2 projectilePos = new Vector2(transform.position.x, transform.position.y);
+
+            Vector2 toPlayer = playerRB.position - projectilePos;
+            float distance = (playerCollider.ClosestPoint(transform.position) - projectilePos).magnitude;
+            distance = Mathf.Max(explosionFullForceRadius, distance);
+
+            if (distance <= explosionRadius)
             {
-                float force = explosionForce / toPlayer.magnitude; // Magnitude is greater zero because player collider size is greater zero
+                float force;
+                if (isForceMoreDistributed)
+                {
+                    // Makes resulting forces equal for the two modes within explosionFullForceRadius
+                    float normalizingFactor = 1f / Mathf.Sqrt(explosionRadius - explosionFullForceRadius);
+
+                    force = normalizingFactor * explosionForce * Mathf.Sqrt(explosionRadius - distance);
+                }
+                else
+                {
+                    force = explosionForce / distance;
+                }
+                // Debug.Log("Force: " + force + ", distance: " + distance);
+
+                if (GameManager.getInstance().isPlayerJumping())
+                {
+                    playerRB.velocity = new Vector2(playerRB.velocity.x, 0f); // Do not add jumping velocity and explosion force
+                }
                 playerRB.AddForce(force * toPlayer.normalized);
                 GameManager.getInstance().setPlayerRagdolls();
             }
