@@ -57,7 +57,6 @@ public class EnemySimple : MonoBehaviour
     {
         if (collision.gameObject.layer == 6) // Got hit by projectile
         {
-            Debug.Log("Hit");
             Destroy(gameObject);
         }
     }

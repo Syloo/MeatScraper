@@ -94,6 +94,14 @@ public class PlayerMovement : MonoBehaviour
         mainCamera.position = new Vector3(transform.position.x, transform.position.y, mainCamera.position.z);
     }
 
+    // Player touched something
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 3) return; // Ignore collisions with yourself
+
+        Debug.Log(collision);
+    }
+
     // Update is called once per frame
     private void Update()
     {
