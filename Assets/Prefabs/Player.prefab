@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakAcceleration: 20
-  jumpVelocity: 15
-  movementSpeed: 2
+  jumpVelocity: 10
+  movementSpeed: 1
   ragdollDuration: 0.2
   groundCollider: {fileID: 8111476102046261898}
   mainCamera: {fileID: 0}
