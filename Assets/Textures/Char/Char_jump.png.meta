@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88006ee8eecbac242bbf159ddf8532f7
+guid: 392b06c19a3c6a74a91063884affb5c2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Char_Idle_0
+      name: Char_jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c3b02eb34a6dd94c9b9a54a2810cee7
-      internalID: -880992
+      spriteID: 9cbd14e65a36ca549a5d2f6dd5ff3fb2
+      internalID: 1185995000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Idle_1
+      name: Char_jump_1
       rect:
         serializedVersion: 2
         x: 32
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84c79f0467b6ae343826e593774440d3
-      internalID: -2033485834
+      spriteID: e55e80a1eae91d744a78148dbe71b723
+      internalID: -1752373225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Idle_2
+      name: Char_jump_2
       rect:
         serializedVersion: 2
         x: 64
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5914286a08641df4781ccb892521e726
-      internalID: 675866816
+      spriteID: 8c594a1eb1add6d408877296438928cb
+      internalID: -899792353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Idle_3
+      name: Char_jump_3
       rect:
         serializedVersion: 2
         x: 96
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc4e2688a02e1c948b4ce2cacfbb2dd5
-      internalID: 2055264405
+      spriteID: 6e1aeea19f793c5499b10ba87570a815
+      internalID: -281594723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Idle_4
+      name: Char_jump_4
       rect:
         serializedVersion: 2
         x: 128
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36167c16141618d4c9cedd56750d1cbe
-      internalID: 2099522621
+      spriteID: 15bda09388edeaa4293e7ac8347aef5c
+      internalID: 533950180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Idle_5
+      name: Char_jump_5
       rect:
         serializedVersion: 2
         x: 160
@@ -223,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 036edaf818bc5994bb1120ac8bfa8671
-      internalID: -1216533002
+      spriteID: 1aad6f9d40d21f041b40acc0a195f129
+      internalID: -1915914418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Idle_6
+      name: Char_jump_6
       rect:
         serializedVersion: 2
         x: 192
@@ -244,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfae8bc34e903a840adab01311c9e9f5
-      internalID: -2014557790
+      spriteID: fab1ec84315cba7428c2802e2c334156
+      internalID: -1507078584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Idle_7
+      name: Char_jump_7
       rect:
         serializedVersion: 2
         x: 224
@@ -265,14 +265,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bf255943edb43f43a9d761059887e09
-      internalID: 2129722228
+      spriteID: babfaff6d404c474d87cd91fbc9326b1
+      internalID: -1090344640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Idle_8
+      name: Char_jump_8
       rect:
         serializedVersion: 2
         x: 256
@@ -286,14 +286,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1552b78d266f254380ead3348fec9ee
-      internalID: -776509793
+      spriteID: 89af48704b75d3848b6804e0306e4b03
+      internalID: 1342375895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_Idle_9
+      name: Char_jump_9
       rect:
         serializedVersion: 2
         x: 288
@@ -307,29 +307,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0153a651f089e34e8a80e83c5b0c3a3
-      internalID: 1041631394
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_Idle_10
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54fd4d8836d35c14b9b72091481274b2
-      internalID: -1281444119
+      spriteID: 78efe6e6a912778408f2e5209b4f44f2
+      internalID: -920445104
       vertices: []
       indices: 
       edges: []
@@ -345,17 +324,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Char_Idle_1: -2033485834
-      Char_Idle_3: 2055264405
-      Char_Idle_8: -776509793
-      Char_Idle_0: -880992
-      Char_Idle_5: -1216533002
-      Char_Idle_2: 675866816
-      Char_Idle_9: 1041631394
-      Char_Idle_4: 2099522621
-      Char_Idle_7: 2129722228
-      Char_Idle_10: -1281444119
-      Char_Idle_6: -2014557790
+      Char_jump_4: 533950180
+      Char_jump_8: 1342375895
+      Char_jump_1: -1752373225
+      Char_jump_9: -920445104
+      Char_jump_0: 1185995000
+      Char_jump_7: -1090344640
+      Char_jump_6: -1507078584
+      Char_jump_3: -281594723
+      Char_jump_5: -1915914418
+      Char_jump_2: -899792353
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

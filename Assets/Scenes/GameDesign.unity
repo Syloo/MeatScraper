@@ -2722,25 +2722,53 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1099003643}
+    - target: {fileID: 8111476100885385629, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.301
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111476100885385629, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000032037492
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111476100885385629, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111476100885385629, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111476100885385629, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111476100885385629, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 8111476101186222130, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8111476101186222130, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8111476101186222130, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8111476101186222130, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8111476101186222141, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45
+      value: 0.335
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111476101186222141, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.054
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
