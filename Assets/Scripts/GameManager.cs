@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class GameManager
 {
+    public float playerHealth = 10f;
+    public float playerInvincibilityDuration = 2f;
+
     private static GameManager instance = null;
 
+    private float playerLastHitTime;
     private PlayerMovement player;
     private Collider2D playerCollider;
     private Rigidbody2D playerRB;
 
     private GameManager()
     {
-        // Nothing
+        playerLastHitTime = 0f;
     }
 
     public static GameManager getInstance()
@@ -51,15 +55,18 @@ public class GameManager
         player.isRagdolling = 1f;
     }
 
-    // Start is called before the first frame update
-    private void Start()
+    public void givePlayerDamage(float amount)
     {
-        
-    }
+        if (Time.time - playerLastHit < playerInvincibilityDuration) return;
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
+        playerLastHit = Time.time;
+        playerHealth -= amount;
+
+        Debug.Log("DMG");
+
+        if (playerHealth <= 0f)
+        {
+            Debug.Log("Player is DEAD!");
+        }
     }
 }

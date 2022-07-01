@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2757816635062593535}
   - component: {fileID: 3270678381055245281}
   - component: {fileID: 4881883029200489086}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionForce: 1200
-  explosionFullForceRadius: 1
+  explosionFullForceRadius: 9.5
   explosionRadius: 10
   isPlayerVelocityIgnored: 1
   isForceMoreDistributed: 1

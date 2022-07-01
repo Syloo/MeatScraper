@@ -55,15 +55,9 @@ public class EnemySimple : MonoBehaviour
     // Enemy touched something
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6) // Got hit by projectile
+        if (collision.gameObject.tag == "Projectile") // Got hit by projectile
         {
             Destroy(gameObject);
         }
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
     }
 }
