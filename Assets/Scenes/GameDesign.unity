@@ -2559,6 +2559,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632343029}
   m_CullTransparentMesh: 1
+--- !u!95 &828779629 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1348969544590616118, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+  m_PrefabInstance: {fileID: 1306801341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &894004671
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,6 +2934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8111476100761137334, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 828779629}
     - target: {fileID: 8111476100761137334, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
       propertyPath: mainCamera
       value: 
@@ -5450,7 +5459,7 @@ GameObject:
   - component: {fileID: 2080451497}
   - component: {fileID: 2080451500}
   m_Layer: 0
-  m_Name: all-in-one_spikes_22
+  m_Name: SpikeTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumpPressed;
     private Rigidbody2D rb;
     private float velocityX;
+
+    public Animator animator;
     
     // Start is called before the first frame update
     private void Start()
@@ -40,9 +42,15 @@ public class PlayerMovement : MonoBehaviour
         // Character orientation
         if (velocityX != 0f)
         {
+
+            animator.SetBool("isWalking", true);
             Vector3 flippedScale = playerModel.localScale;
             flippedScale.x = Mathf.Sign(-velocityX) * Mathf.Abs(flippedScale.x);
             playerModel.localScale = flippedScale;
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
 
 
@@ -78,7 +86,12 @@ public class PlayerMovement : MonoBehaviour
         float velocityY = rb.velocity.y;
         if (isJumping > 0f)
         {
+            animator.SetBool("isJumping", true);
             isJumping -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
         }
         if (isJumpPressed)
         {
