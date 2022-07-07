@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager
 {
-    public float playerHealth = 10f;
+    public float playerHealth = 3f;
     public float playerInvincibilityDuration = 2f;
 
     private static GameManager instance = null;
@@ -57,9 +57,9 @@ public class GameManager
 
     public void givePlayerDamage(float amount)
     {
-        if (Time.time - playerLastHit < playerInvincibilityDuration) return;
+        if (Time.time - playerLastHitTime < playerInvincibilityDuration) return;
 
-        playerLastHit = Time.time;
+        playerLastHitTime = Time.time;
         playerHealth -= amount;
 
         Debug.Log("DMG");
