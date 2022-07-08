@@ -13,6 +13,7 @@ public class GameManager
     private float playerLastHitTime;
     private PlayerMovement player;
     private Collider2D playerCollider;
+    private int playerMaxHealth;
     private Rigidbody2D playerRB;
 
     private GameObject[] hearts;
@@ -22,6 +23,7 @@ public class GameManager
     private GameManager()
     {
         playerLastHitTime = 0f;
+        playerMaxHealth = playerHealth;
     }
 
     public static GameManager getInstance()
@@ -74,6 +76,7 @@ public class GameManager
         if (playerHealth <= 0f)
         {
             Debug.Log("Player is DEAD!");
+            playerHealth = playerMaxHealth;
             SceneManager.LoadScene("GameDesign");
         }
     }
