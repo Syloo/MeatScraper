@@ -21,10 +21,13 @@ public class PlayerMovement : MonoBehaviour
     private float velocityX;
 
     public Animator animator;
+    public SpriteRenderer characterSprite;
+    private bool isFlipped;
     
     // Start is called before the first frame update
     private void Start()
     {
+        isFlipped = false;
         isJumpPressed = false;
         isJumping = 0f;
         isRagdolling = 0f;
@@ -51,6 +54,16 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             animator.SetBool("isWalking", false);
+        }
+        if (velocityX < 0)
+        {
+            isFlipped = false;
+            characterSprite.flipX = false;
+        }
+        else if(velocityX > 0)
+        {
+            isFlipped = true;
+            characterSprite.flipX = true;
         }
 
 

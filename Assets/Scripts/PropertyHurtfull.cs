@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PropertyHurtfull : MonoBehaviour
 {
-    public float damageCaused = 1f;
+    public int damageCaused = 1;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
