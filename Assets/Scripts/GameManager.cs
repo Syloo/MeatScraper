@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager
 {
     public int playerHealth = 3;
-    public float playerInvincibilityDuration = 2f;
+    public float playerInvincibilityDuration = 1.5f;
 
     private static GameManager instance = null;
 
@@ -56,7 +56,7 @@ public class GameManager
         playerCollider = player.GetComponent<Collider2D>();
         playerRB = player.GetComponent<Rigidbody2D>();
         hearts = GameObject.FindGameObjectsWithTag("Heart");
-        Debug.Log(hearts.Length);
+        //Debug.Log(hearts.Length);
     }
 
     public void setPlayerRagdolls()
@@ -77,7 +77,7 @@ public class GameManager
         {
             Debug.Log("Player is DEAD!");
             playerHealth = playerMaxHealth;
-            SceneManager.LoadScene("GameDesign");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

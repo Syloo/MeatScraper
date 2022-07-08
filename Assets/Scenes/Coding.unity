@@ -428,6 +428,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0e3561af9c4e81499753df92587eb7c, type: 3}
+--- !u!95 &1186214047 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1348969544590616118, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+  m_PrefabInstance: {fileID: 8111476102444308762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1186214048 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1884037271308412309, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+  m_PrefabInstance: {fileID: 8111476102444308762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1276430386
 GameObject:
   m_ObjectHideFlags: 0
@@ -13555,9 +13565,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8111476100761137334, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1186214047}
+    - target: {fileID: 8111476100761137334, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420032}
+    - target: {fileID: 8111476100761137334, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: characterSprite
+      value: 
+      objectReference: {fileID: 1186214048}
     - target: {fileID: 8111476100885385618, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
       propertyPath: crosshair
       value: 
