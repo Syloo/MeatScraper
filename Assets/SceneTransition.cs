@@ -12,29 +12,26 @@ public class SceneTransition : MonoBehaviour
     public float timeUntilQuit = 2f;
     public RawImage transitionBlackScreen;
     public float transitionSpeed;
-    
+    private Color color;
 
-    public void OnTriggerEnter(Collider other)
+
+   
+
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {
 
-            if(isStarting)
-            {
-                // SceneManager.LoadScene(sceneToLoad);
+            Debug.Log("Transition");
                 startTransition = true;
-            }
-            else if(isQuitting)
-            {
-                Application.Quit();
-            }
+           
 
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-        transitionBlackScreen.color = new Color(1, 1, 1, 0);
+        transitionBlackScreen.color = new Color(25, 0, 0, 0);
     }
 
     // Update is called once per frame
@@ -43,6 +40,22 @@ public class SceneTransition : MonoBehaviour
         if(startTransition)
         {
 
+            color += new Color(0, 0, 0, transitionSpeed * Time.deltaTime);
+            transitionBlackScreen.color = color;
+            timeUntilQuit -= Time.deltaTime;
+            if(timeUntilQuit <= 0)
+            {
+
+                if (isStarting)
+                {
+                    SceneManager.LoadScene(sceneToLoad);
+                }
+                else if (isQuitting)
+                {
+                    Application.Quit();
+                }
+
+            }
 
 
         }
