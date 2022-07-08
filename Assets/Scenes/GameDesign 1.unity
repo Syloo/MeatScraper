@@ -2500,7 +2500,7 @@ GameObject:
   - component: {fileID: 663539115}
   m_Layer: 5
   m_Name: 2  hearts left
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2522,7 +2522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10.045}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -791.48, y: 452.00998}
+  m_AnchoredPosition: {x: -716.148, y: 452.00998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &663539115
@@ -2602,7 +2602,7 @@ GameObject:
   - component: {fileID: 906535787}
   m_Layer: 5
   m_Name: 3 hearts left
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2624,7 +2624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 7.81}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -706, y: 456}
+  m_AnchoredPosition: {x: -791.47284, y: 456}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &906535787
@@ -2770,6 +2770,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1184291718 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1884037271308412309, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+  m_PrefabInstance: {fileID: 1306801341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1276430386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,6 +2922,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1099003644}
+    - target: {fileID: 8111476100761137334, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
+      propertyPath: characterSprite
+      value: 
+      objectReference: {fileID: 1184291718}
     - target: {fileID: 8111476100885385618, guid: b7aed8012c67c7e4dbe8e8278a87e3d3, type: 3}
       propertyPath: crosshair
       value: 
@@ -5435,7 +5444,7 @@ GameObject:
   - component: {fileID: 1943033746}
   m_Layer: 5
   m_Name: 1 Heart left
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
