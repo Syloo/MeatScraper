@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         isRagdolling = 0f;
         rb = GetComponent<Rigidbody2D>();
         velocityX = 0f;
+        animator = GetComponent<Animator>();
 
         GameManager.getInstance().setPlayer(this);
     }
