@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Projectile
   - Heart
+  - Transition
   layers:
   - Default
   - TransparentFX
