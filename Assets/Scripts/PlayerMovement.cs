@@ -10,13 +10,12 @@ public class PlayerMovement : MonoBehaviour
     public float ragdollDuration = 0.2f;
 
     public Collider2D groundCollider;
-    public Transform mainCamera;
-    public Transform playerModel;
 
     public float isJumping;
     public float isRagdolling;
     
     private bool isJumpPressed;
+    private Transform mainCamera;
     private Rigidbody2D rb;
     private float velocityX;
 
@@ -29,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         isJumpPressed = false;
         isJumping = 0f;
         isRagdolling = 0f;
+        mainCamera = Camera.main.transform;
         rb = GetComponent<Rigidbody2D>();
         velocityX = 0f;
 
@@ -43,11 +43,7 @@ public class PlayerMovement : MonoBehaviour
         // Character orientation
         if (velocityX != 0f)
         {
-
             animator.SetBool("isWalking", true);
-            Vector3 flippedScale = playerModel.localScale;
-            flippedScale.x = Mathf.Sign(-velocityX) * Mathf.Abs(flippedScale.x);
-            playerModel.localScale = flippedScale;
         }
         else
         {

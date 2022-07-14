@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2647770362298467910}
   - component: {fileID: 2647770362298467909}
+  - component: {fileID: 844862462112393201}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -84,6 +85,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &844862462112393201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2647770362298467911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc05c0e05a887ad49ad33ebaebf896a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startScale: {x: 2, y: 2, z: 2}
+  endScale: {x: 2.5, y: 2.5, z: 2.5}
+  curScale: {x: 0, y: 0, z: 0}
+  backgroundSprite: {fileID: 2647770362298467910}
+  moveSpeed: 0.05
 --- !u!1 &2647770362898578674
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +114,7 @@ GameObject:
   - component: {fileID: 2647770362898578672}
   - component: {fileID: 2647770362898578673}
   m_Layer: 0
-  m_Name: PlayerKamera
+  m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
