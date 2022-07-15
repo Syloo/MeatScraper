@@ -246,7 +246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ef4d9819b23404ea5cf9a5bef71bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.5
+  cooldownAfterOverheat: 5
+  cooldownBetweenShots: 0.5
+  heatPerShot: 0.3
+  animator: {fileID: 1828296475040890776}
   gun: {fileID: 8111476100885385629}
   projectileSpawn: {fileID: 8111476101464052209}
   projectilePrefab: {fileID: 7366026489657730974, guid: f792019bd127ebf40b8636677457d2c6, type: 3}
@@ -260,6 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8111476101186222141}
   - component: {fileID: 8111476101186222130}
+  - component: {fileID: 1828296475040890776}
   m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
@@ -334,6 +338,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1828296475040890776
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8111476101186222140}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 265e966570905341a8343484b66d5207, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8111476101464052208
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,6 @@ public class GameManager
 
     private GameObject[] hearts;
 
-    public object GameObjects { get; private set; }
 
     private GameManager()
     {
@@ -34,6 +33,8 @@ public class GameManager
         }
         return instance;
     }
+
+    public UILogic MainUI { get; set; }
 
     public Collider2D getPlayerCollider()
     {
@@ -71,7 +72,6 @@ public class GameManager
         playerLastHitTime = Time.time;
         playerHealth -= amount;
         hearts[playerHealth].SetActive(false);
-        Debug.Log("DMG");
 
         if (playerHealth <= 0f)
         {
