@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public float cooldown;
+    public float cooldownAfterOverheat;
+    public float cooldownBetweenShots;
+    public float heatPerShot;
 
+    public Animator animator;
     public Transform gun;
     public Transform projectileSpawn;
     public GameObject projectilePrefab;
 
     private Vector2 aimDirection;
-    private float cooldownRemaining;
+    private float heat;
     private Camera mainCamera;
+    private float nextShotReadyTime;
 
     // Start is called before the first frame update
     private void Start()
     {
         aimDirection = new Vector2(1f, 0f);
-        cooldownRemaining = 0f;
+        heat = 0f;
         mainCamera = Camera.main;
+        nextShotReadyTime = 0f;
 
         Cursor.visible = false;
     }
@@ -27,17 +32,32 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        UILogic ui = GameManager.getInstance().MainUI;
+
         // Shooting
-        cooldownRemaining -= Time.deltaTime;
-        if (Input.GetButtonDown("Fire1"))
+        heat = Mathf.Max(0f, heat - Time.deltaTime / cooldownAfterOverheat);
+        if (Input.GetButtonDown("Fire1") && Time.time - nextShotReadyTime >= 0f)
         {
             Cursor.visible = false;
-            if (cooldownRemaining <= 0f)
+            heat += heatPerShot;
+            Instantiate(projectilePrefab, projectileSpawn.position, projectileSpawn.rotation);
+
+            if (heat > 1f)
             {
-                cooldownRemaining = cooldown;
-                Instantiate(projectilePrefab, projectileSpawn.position, projectileSpawn.rotation);
+                nextShotReadyTime = Time.time + cooldownAfterOverheat;
+                animator.SetBool("hasOverheated", true);
+                ui.setOverheated(true);
+                heat = 1f;
+                GameManager.getInstance().givePlayerDamage(1);
+            }
+            else
+            {
+                nextShotReadyTime = Time.time + cooldownBetweenShots;
+                animator.SetBool("hasOverheated", false);
+                ui.setOverheated(false);
             }
         }
+        ui.setHeatTo(heat);
 
         // Gun placement
         Vector3 newAimDirection = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
