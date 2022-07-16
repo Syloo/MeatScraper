@@ -10,6 +10,8 @@ public class UILogic : MonoBehaviour
     [SerializeField]
     private Image heatImage;
     [SerializeField]
+    private GameObject heatMeter;
+    [SerializeField]
     private RectTransform heatProgress;
     [SerializeField]
     private Color heatProgressColor;
@@ -18,7 +20,17 @@ public class UILogic : MonoBehaviour
 
     public void setHeatTo(float fraction)
     {
+        float oldProgress = heatProgress.sizeDelta.x;
         heatProgress.sizeDelta = new Vector2(500f * fraction, heatProgress.sizeDelta.y);
+
+        if (oldProgress > 0f && fraction == 0f)
+        {
+            heatMeter.SetActive(false);
+        }
+        else if (oldProgress == 0f && fraction > 0f)
+        {
+            heatMeter.SetActive(true);
+        }
     }
 
     public void setOverheated(bool hasOverheated)
@@ -37,6 +49,7 @@ public class UILogic : MonoBehaviour
     private void Start()
     {
         setHeatTo(0f);
+        heatMeter.SetActive(false);
         GameManager.getInstance().MainUI = this;
     }
 

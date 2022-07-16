@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1348969544590616118}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 8111476100761137334}
   - component: {fileID: 8111476100761137331}
   - component: {fileID: 8111476100761137329}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -210,9 +210,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8111476100885385629}
   - component: {fileID: 8111476100885385618}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,9 +264,9 @@ GameObject:
   - component: {fileID: 8111476101186222141}
   - component: {fileID: 8111476101186222130}
   - component: {fileID: 1828296475040890776}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,9 +367,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8111476101464052209}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: ProjectileSpawn
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,7 +382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8111476101464052208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -399,9 +399,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8111476102046261909}
   - component: {fileID: 8111476102046261898}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

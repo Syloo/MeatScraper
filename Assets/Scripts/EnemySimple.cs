@@ -9,6 +9,7 @@ public class EnemySimple : MonoBehaviour
     public Transform enemyModel;
 
     private bool isWalkingForwards;
+    private Vector3 lastPosition;
     private Rigidbody2D rb;
     private Vector2 startingPoint;
 
@@ -16,38 +17,39 @@ public class EnemySimple : MonoBehaviour
     private void Start()
     {
         isWalkingForwards = true;
+        lastPosition = Vector3.zero;
         rb = GetComponent<Rigidbody2D>();
         startingPoint = transform.position;
+    }
+
+    private void changeDirection()
+    {
+        isWalkingForwards = !isWalkingForwards;
+
+        Vector3 flippedScale = enemyModel.localScale;
+        flippedScale.x = -flippedScale.x;
+        enemyModel.localScale = flippedScale;
     }
 
     // Update is called once per physics tick
     private void FixedUpdate()
     {
+        // Change direction when stuck
+        float distanceTraveled = (transform.position - lastPosition).sqrMagnitude;
+        if (distanceTraveled < 0.0001f) changeDirection();
+        lastPosition = transform.position;
+
+        // Move
         float velocityX;
         if (isWalkingForwards)
         {
-            velocityX = movementSpeed;
-            if (transform.position.x > startingPoint.x + walkDistance)
-            {
-                isWalkingForwards = false;
-
-                Vector3 flippedScale = enemyModel.localScale;
-                flippedScale.x = -flippedScale.x;
-                enemyModel.localScale = flippedScale;
-            }
+            if (transform.position.x > startingPoint.x + walkDistance) changeDirection();
         }
         else
         {
-            velocityX = -movementSpeed;
-            if (transform.position.x < startingPoint.x - walkDistance)
-            {
-                isWalkingForwards = true;
-
-                Vector3 flippedScale = enemyModel.localScale;
-                flippedScale.x = -flippedScale.x;
-                enemyModel.localScale = flippedScale;
-            }
+            if (transform.position.x < startingPoint.x - walkDistance) changeDirection();
         }
+        velocityX = (isWalkingForwards ? movementSpeed : -movementSpeed);
 
         rb.velocity = new Vector2(velocityX, rb.velocity.y);
     }

@@ -13,20 +13,23 @@ public class Projectile : MonoBehaviour
 
     public GameObject explosionEffect;
 
+    private bool hasTriggered;
     private Rigidbody2D playerRB;
 
 
     // Start is called before the first frame update
     private void Start()
     {
+        hasTriggered = false;
         playerRB = GameManager.getInstance().getPlayerRB();
         GetComponent<Rigidbody2D>().velocity = playerRB.velocity + speed * (Vector2) transform.right;
     }
 
     // Projectile did hit something
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.layer == 3) return; // Ignore collisions with player
+        if (other.tag == "Player" || hasTriggered) return; // Ignore collisions with player
+        hasTriggered = true;
 
         Collider2D playerCollider = GameManager.getInstance().getPlayerCollider();
         Vector2 projectilePos = transform.position;

@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 1562442190784743967}
   heatImage: {fileID: 3348445576706718402}
+  heatMeter: {fileID: 9154618667735606785}
   heatProgress: {fileID: 6162094477265781182}
   heatProgressColor: {r: 0.90588236, g: 0.7254902, b: 0.09411765, a: 1}
   overheatColor: {r: 0.90588236, g: 0.17254902, b: 0.09411765, a: 1}
