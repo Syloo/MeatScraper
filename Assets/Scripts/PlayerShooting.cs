@@ -18,9 +18,12 @@ public class PlayerShooting : MonoBehaviour
     private Camera mainCamera;
     private float nextShotReadyTime;
 
+    public ParticleSystem reloadingSmoke;
+
     // Start is called before the first frame update
     private void Start()
     {
+        reloadingSmoke.Stop();
         aimDirection = new Vector2(1f, 0f);
         heat = 0f;
         mainCamera = Camera.main;
@@ -44,6 +47,8 @@ public class PlayerShooting : MonoBehaviour
 
             if (heat > 1f)
             {
+
+                reloadingSmoke.Play();               
                 nextShotReadyTime = Time.time + cooldownAfterOverheat;
                 animator.SetBool("hasOverheated", true);
                 ui.setOverheated(true);
@@ -53,7 +58,6 @@ public class PlayerShooting : MonoBehaviour
             else
             {
                 nextShotReadyTime = Time.time + cooldownBetweenShots;
-                animator.SetBool("hasOverheated", false);
                 ui.setOverheated(false);
             }
         }

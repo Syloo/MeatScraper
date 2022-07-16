@@ -77,7 +77,9 @@ public class GameManager
         {
             Debug.Log("Player is DEAD!");
             playerHealth = playerMaxHealth;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            player.animator.SetBool("isDying", true);
+            player.isAlive = false;
+            //SceneManager.LoadScene("MainManu");
         }
     }
 }

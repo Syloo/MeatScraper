@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Main Settings")]
     public float breakAcceleration;
     public float jumpVelocity;
     public float movementSpeed;
@@ -19,8 +21,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private float velocityX;
 
+    [Header("Animations")]
     public Animator animator;
     public SpriteRenderer characterSprite;
+
+    [Header("DeadAnimation")]
+    public bool isAlive = true;
+    public float dyingTime = 4f;
+    public GameObject gun;
     
     // Start is called before the first frame update
     private void Start()
@@ -91,12 +99,12 @@ public class PlayerMovement : MonoBehaviour
         float velocityY = rb.velocity.y;
         if (isJumping > 0f)
         {
-            animator.SetBool("isJumping", true);
+            //animator.SetBool("isJumping", true);
             isJumping -= Time.fixedDeltaTime;
         }
         else
         {
-            animator.SetBool("isJumping", false);
+            //animator.SetBool("isJumping", false);
         }
         if (isJumpPressed)
         {
@@ -108,8 +116,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        rb.velocity = new Vector2(velocityX, velocityY);
-        mainCamera.position = new Vector3(transform.position.x, transform.position.y, mainCamera.position.z);
+
+        if(isAlive)
+        {
+            rb.velocity = new Vector2(velocityX, velocityY);
+            mainCamera.position = new Vector3(transform.position.x, transform.position.y, mainCamera.position.z);
+        }
+        
     }
 
     // Update is called once per frame
@@ -119,6 +132,25 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             isJumpPressed = true;
+        }
+
+
+        if(!isAlive)
+        {
+
+            gun.SetActive(false);
+
+            dyingTime -= Time.deltaTime;
+            if(dyingTime <= 0)
+            {
+
+                SceneManager.LoadScene("MainManu");
+                animator.SetBool("isDying", false);
+
+            }
+
+
+
         }
     }
 }
