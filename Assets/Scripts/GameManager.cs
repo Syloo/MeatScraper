@@ -75,6 +75,25 @@ public class GameManager
         player.isRagdolling = 1f;
     }
 
+    public void FillUpLife(int life)
+    {
+
+        if(playerHealth + life <= 3)
+        {
+
+            playerHealth += life;
+            for(int i = 0; i < playerHealth; i++)
+            {
+
+                hearts[i].SetActive(true);
+
+            }
+
+
+        }
+
+    }
+
     // Gives player damage, returns if player died
     public bool givePlayerDamage(int amount)
     {
