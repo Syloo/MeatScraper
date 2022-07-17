@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 3826643260868710686}
   - component: {fileID: 3826643260868710685}
   - component: {fileID: 3826643260868710684}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Middleground (Collisions)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

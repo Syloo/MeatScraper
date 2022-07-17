@@ -31,8 +31,6 @@ public class PlayerStarter : MonoBehaviour
         {
             canonModel.SetActive(true);
             canonSet = true;
-            Debug.Log("setcanon");
-
         }
     }
 

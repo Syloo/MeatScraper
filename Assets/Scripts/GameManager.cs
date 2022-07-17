@@ -10,7 +10,7 @@ public class GameManager
 
     private static GameManager instance = null;
 
-    private float playerLastHitTime;
+    private float invincibilityEndTime;
     private PlayerMovement player;
     private Collider2D playerCollider;
     private int playerMaxHealth;
@@ -21,7 +21,7 @@ public class GameManager
 
     private GameManager()
     {
-        playerLastHitTime = 0f;
+        invincibilityEndTime = 0f;
         playerMaxHealth = playerHealth;
     }
 
@@ -41,9 +41,19 @@ public class GameManager
         return playerCollider;
     }
 
+    public Vector2 getPlayerLastVelocity()
+    {
+        return player.getLastVelocity();
+    }
+
     public Rigidbody2D getPlayerRB()
     {
         return playerRB;
+    }
+
+    public bool isPlayerInvincible()
+    {
+        return Time.time < invincibilityEndTime;
     }
 
     public bool isPlayerJumping()
@@ -65,21 +75,27 @@ public class GameManager
         player.isRagdolling = 1f;
     }
 
-    public void givePlayerDamage(int amount)
+    // Gives player damage, returns if player died
+    public bool givePlayerDamage(int amount)
     {
-        if (Time.time - playerLastHitTime < playerInvincibilityDuration) return;
+        if (isPlayerInvincible()) return !player.isAlive;
 
-        playerLastHitTime = Time.time;
+        invincibilityEndTime = Time.time + playerInvincibilityDuration;
         playerHealth -= amount;
-        hearts[playerHealth].SetActive(false);
+        if (hearts.Length > playerHealth) hearts[playerHealth].SetActive(false);
+        Debug.Log("Got 1 damage");
 
         if (playerHealth <= 0f)
         {
             Debug.Log("Player is DEAD!");
+            invincibilityEndTime += player.dyingTime;
             playerHealth = playerMaxHealth;
             player.animator.SetBool("isDying", true);
             player.isAlive = false;
             //SceneManager.LoadScene("MainManu");
+            return true;
         }
+
+        return false;
     }
 }

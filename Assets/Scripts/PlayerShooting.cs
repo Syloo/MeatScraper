@@ -47,17 +47,18 @@ public class PlayerShooting : MonoBehaviour
 
             if (heat > 1f)
             {
-
-                reloadingSmoke.Play();               
                 nextShotReadyTime = Time.time + cooldownAfterOverheat;
                 animator.SetBool("hasOverheated", true);
-                ui.setOverheated(true);
                 heat = 1f;
+                reloadingSmoke.Play();
+                ui.setOverheated(true);
+
                 GameManager.getInstance().givePlayerDamage(1);
             }
             else
             {
                 nextShotReadyTime = Time.time + cooldownBetweenShots;
+                animator.SetBool("hasOverheated", false);
                 ui.setOverheated(false);
             }
         }

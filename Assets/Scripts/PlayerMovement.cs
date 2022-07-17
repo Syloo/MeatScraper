@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float isRagdolling;
     
     private bool isJumpPressed;
+    private Vector2 lastVelocity;
     private Transform mainCamera;
     private Rigidbody2D rb;
     private float velocityX;
@@ -43,10 +44,15 @@ public class PlayerMovement : MonoBehaviour
         GameManager.getInstance().setPlayer(this);
     }
 
+    public Vector2 getLastVelocity()
+    {
+        return lastVelocity;
+    }
+
     // Update is called once per physics tick
     private void FixedUpdate()
     {
-        bool isGrounded = groundCollider.IsTouchingLayers(Physics2D.AllLayers);
+        bool isGrounded = groundCollider.IsTouchingLayers(1 << 3);
 
         // Character orientation
         if (velocityX != 0f)
@@ -76,7 +82,8 @@ public class PlayerMovement : MonoBehaviour
                 isRagdolling = 0f;
             }
         }
-        if (isRagdolling >= 1f) // Influenced by explosion
+
+        if (isRagdolling >= 1f) // Influenced by explosion or knockback
         {
             if (Mathf.Abs(rb.velocity.x) > movementSpeed)
             {
@@ -84,12 +91,18 @@ public class PlayerMovement : MonoBehaviour
                 {
                     velocityX = Mathf.Sign(rb.velocity.x) * (Mathf.Abs(rb.velocity.x) - Time.fixedDeltaTime * breakAcceleration);
                 }
-                else // Let it ragdoll
+                else // Ragdoll while being fast
                 {
                     velocityX = rb.velocity.x;
                 }
             }
-            else if (velocityX == 0f || isRagdolling < 1f + ragdollDuration) // Let it ragdoll if no explicit input
+            // Stop ragdolling if player actively moves after ragdollDuration while being slow
+            else if (isRagdolling >= 1f + ragdollDuration && velocityX != 0f)
+            {
+                isRagdolling = 0f;
+            }
+            // Ragdoll while being slow but during ragdollDuration or without the player actively moving
+            else
             {
                 velocityX = rb.velocity.x;
             }
@@ -117,40 +130,36 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if(isAlive)
+        rb.velocity = lastVelocity = new Vector2(velocityX, velocityY);
+        if (isAlive)
         {
-            rb.velocity = new Vector2(velocityX, velocityY);
             mainCamera.position = new Vector3(transform.position.x, transform.position.y, mainCamera.position.z);
         }
-        
     }
 
     // Update is called once per frame
     private void Update()
     {
-        velocityX = movementSpeed * Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump"))
+        if (isAlive)
         {
-            isJumpPressed = true;
+            velocityX = movementSpeed * Input.GetAxis("Horizontal");
+            if (Input.GetButtonDown("Jump"))
+            {
+                isJumpPressed = true;
+            }
         }
-
-
-        if(!isAlive)
+        else
         {
-
+            velocityX = 0f;
             gun.SetActive(false);
 
             dyingTime -= Time.deltaTime;
-            if(dyingTime <= 0)
+            if (dyingTime <= 0)
             {
-
                 SceneManager.LoadScene("MainManu");
+                // SceneManager.LoadScene("Coding");
                 animator.SetBool("isDying", false);
-
             }
-
-
-
         }
     }
 }
