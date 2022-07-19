@@ -16,11 +16,15 @@ public class GameManager
     private int playerMaxHealth;
     private Rigidbody2D playerRB;
 
+    private SoundManager soundManager = SoundManager.instance;
+
     private GameObject[] hearts;
 
+  
 
     private GameManager()
     {
+
         invincibilityEndTime = 0f;
         playerMaxHealth = playerHealth;
     }
@@ -103,6 +107,8 @@ public class GameManager
         playerHealth -= amount;
         if (hearts.Length > playerHealth) hearts[playerHealth].SetActive(false);
         Debug.Log("Got 1 damage");
+        int randomDamageID = Random.Range(1,5);
+        soundManager.PlaySound("Damage_" + randomDamageID.ToString());
 
         if (playerHealth <= 0f)
         {

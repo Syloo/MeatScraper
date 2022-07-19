@@ -18,11 +18,15 @@ public class PlayerShooting : MonoBehaviour
     private Camera mainCamera;
     private float nextShotReadyTime;
 
+    private SoundManager soundManager;
+
     public ParticleSystem reloadingSmoke;
 
     // Start is called before the first frame update
     private void Start()
     {
+
+        soundManager = SoundManager.instance;
         reloadingSmoke.Stop();
         aimDirection = new Vector2(1f, 0f);
         heat = 0f;
@@ -47,6 +51,7 @@ public class PlayerShooting : MonoBehaviour
 
             if (heat > 1f)
             {
+                soundManager.PlaySound("Shoot");
                 nextShotReadyTime = Time.time + cooldownAfterOverheat;
                 animator.SetBool("hasOverheated", true);
                 heat = 1f;
@@ -57,6 +62,7 @@ public class PlayerShooting : MonoBehaviour
             }
             else
             {
+                soundManager.PlaySound("Shoot");
                 nextShotReadyTime = Time.time + cooldownBetweenShots;
                 animator.SetBool("hasOverheated", false);
                 ui.setOverheated(false);

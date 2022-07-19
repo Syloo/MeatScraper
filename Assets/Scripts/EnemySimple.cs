@@ -12,10 +12,12 @@ public class EnemySimple : MonoBehaviour
     private Vector3 lastPosition;
     private Rigidbody2D rb;
     private Vector2 startingPoint;
+    private SoundManager sM;
 
     // Start is called before the first frame update
     private void Start()
     {
+        sM = SoundManager.instance;
         isWalkingForwards = true;
         lastPosition = Vector3.zero;
         rb = GetComponent<Rigidbody2D>();
@@ -59,6 +61,8 @@ public class EnemySimple : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile") // Got hit by projectile
         {
+            int randomID = Random.Range(1, 3);
+            sM.PlaySound("EnemyDie_" + randomID);
             Destroy(gameObject);
         }
     }
