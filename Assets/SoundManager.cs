@@ -65,6 +65,7 @@ public class SoundManager : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
 
     }
