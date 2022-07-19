@@ -13,10 +13,14 @@ public class EnemySimple : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 startingPoint;
     private SoundManager sM;
+    private Animator animator;
+    private bool isDead;
 
     // Start is called before the first frame update
     private void Start()
     {
+        isDead = false;
+        animator = GetComponentInChildren<Animator>();
         sM = SoundManager.instance;
         isWalkingForwards = true;
         lastPosition = Vector3.zero;
@@ -36,24 +40,28 @@ public class EnemySimple : MonoBehaviour
     // Update is called once per physics tick
     private void FixedUpdate()
     {
-        // Change direction when stuck
-        float distanceTraveled = (transform.position - lastPosition).sqrMagnitude;
-        if (distanceTraveled < 0.0001f) changeDirection();
-        lastPosition = transform.position;
-
-        // Move
-        float velocityX;
-        if (isWalkingForwards)
+        if(!isDead)
         {
-            if (transform.position.x > startingPoint.x + walkDistance) changeDirection();
-        }
-        else
-        {
-            if (transform.position.x < startingPoint.x - walkDistance) changeDirection();
-        }
-        velocityX = (isWalkingForwards ? movementSpeed : -movementSpeed);
+            // Change direction when stuck
+            float distanceTraveled = (transform.position - lastPosition).sqrMagnitude;
+            if (distanceTraveled < 0.0001f) changeDirection();
+            lastPosition = transform.position;
 
-        rb.velocity = new Vector2(velocityX, rb.velocity.y);
+            // Move
+            float velocityX;
+            if (isWalkingForwards)
+            {
+                if (transform.position.x > startingPoint.x + walkDistance) changeDirection();
+            }
+            else
+            {
+                if (transform.position.x < startingPoint.x - walkDistance) changeDirection();
+            }
+            velocityX = (isWalkingForwards ? movementSpeed : -movementSpeed);
+
+            rb.velocity = new Vector2(velocityX, rb.velocity.y);
+        }
+        
     }
 
     // Enemy touched something
@@ -61,9 +69,19 @@ public class EnemySimple : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile") // Got hit by projectile
         {
+            isDead = true;
+            animator.SetBool("enemyDead", true);
             int randomID = Random.Range(1, 3);
             sM.PlaySound("EnemyDie_" + randomID);
-            Destroy(gameObject);
+            Invoke("ReallyDie", 3f);
         }
+    }
+
+    private void ReallyDie()
+    {
+
+        Destroy(gameObject);
+
+
     }
 }
