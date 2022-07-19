@@ -30,10 +30,16 @@ public class PlayerMovement : MonoBehaviour
     public bool isAlive = true;
     public float dyingTime = 4f;
     public GameObject gun;
+
+    [Header("Step Audio")]
+    [SerializeField]
+    private AudioSource audioSource;
+    private bool isPlayingWalkSound = false;
     
     // Start is called before the first frame update
     private void Start()
     {
+        audioSource = GetComponentInChildren<AudioSource>();
         isJumpPressed = false;
         isJumping = 0f;
         isRagdolling = 0f;
@@ -58,10 +64,17 @@ public class PlayerMovement : MonoBehaviour
         if (velocityX != 0f)
         {
             animator.SetBool("isWalking", true);
+            if(!isPlayingWalkSound && isGrounded)
+            {
+                isPlayingWalkSound = true;
+                audioSource.Play();
+            }
         }
         else
         {
             animator.SetBool("isWalking", false);
+            audioSource.Stop();
+            isPlayingWalkSound = false;
         }
         if (velocityX < 0)
         {
