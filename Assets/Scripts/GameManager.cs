@@ -82,7 +82,7 @@ public class GameManager
     public void FillUpLife(int life)
     {
 
-        if(playerHealth + life <= 3)
+        if(playerHealth + life <= playerMaxHealth)
         {
 
             playerHealth += life;
@@ -105,12 +105,16 @@ public class GameManager
 
         invincibilityEndTime = Time.time + playerInvincibilityDuration;
         playerHealth -= amount;
-        if (hearts.Length > playerHealth) hearts[playerHealth].SetActive(false);
-        Debug.Log("Got 1 damage");
+        if (playerHealth >= 0 && playerHealth < hearts.Length) hearts[playerHealth].SetActive(false);
         int randomDamageID = Random.Range(1,5);
         soundManager.PlaySound("Damage_" + randomDamageID.ToString());
 
-        if (playerHealth <= 0f)
+        if (playerHealth > 0f)
+        {
+            player.playInvincibleAnimationFor(playerInvincibilityDuration);
+            return false;
+        }
+        else
         {
             Debug.Log("Player is DEAD!");
             invincibilityEndTime += player.dyingTime;
@@ -121,6 +125,5 @@ public class GameManager
             return true;
         }
 
-        return false;
     }
 }

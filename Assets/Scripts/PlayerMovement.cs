@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float isJumping;
     public float isRagdolling;
-    
+
+    private float isInvincible;
     private bool isJumpPressed;
     private Vector2 lastVelocity;
     private Transform mainCamera;
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Animations")]
     public Animator animator;
     public SpriteRenderer characterSprite;
+    public SpriteRenderer gunSprite;
 
     [Header("DeadAnimation")]
     public bool isAlive = true;
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        isInvincible = 0f;
         isJumpPressed = false;
         isJumping = 0f;
         isRagdolling = 0f;
@@ -47,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 getLastVelocity()
     {
         return lastVelocity;
+    }
+
+    public void playInvincibleAnimationFor(float seconds)
+    {
+        isInvincible = seconds;
     }
 
     // Update is called once per physics tick
@@ -146,6 +154,24 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 isJumpPressed = true;
+            }
+
+            if (isInvincible > 0f)
+            {
+                Color c = characterSprite.color;
+                Color g = gunSprite.color;
+                if (isInvincible % 0.4 < 0.2f)
+                {
+                    c.a = g.a = 1f;
+                }
+                else
+                {
+                    c.a = g.a = 0.2f;
+                }
+                characterSprite.color = c;
+                gunSprite.color = g;
+
+                isInvincible -= Time.deltaTime;
             }
         }
         else

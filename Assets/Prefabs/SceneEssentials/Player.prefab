@@ -163,6 +163,7 @@ MonoBehaviour:
   isRagdolling: 0
   animator: {fileID: 1348969544590616118}
   characterSprite: {fileID: 1884037271308412309}
+  gunSprite: {fileID: 8111476101186222130}
   isAlive: 1
   dyingTime: 4
   gun: {fileID: 8111476100885385628}

@@ -18,7 +18,7 @@ public class PlayerStarter : MonoBehaviour
         canonModel.SetActive(false);
 
         player.animator.SetBool("isBorn", true);
-        Invoke("SetFalseAgain", .1f);
+        Invoke("SetFalseAgain", 1f);
 
 
     }
