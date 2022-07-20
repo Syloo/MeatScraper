@@ -59,10 +59,10 @@ MonoBehaviour:
     randomPitch: 0
   - soundName: Shoot
     audioClip: {fileID: 8300000, guid: f984f6912e1ce4b4c969eff0511bc49f, type: 3}
-    volume: 0.646
+    volume: 0.556
     randomVolume: 0.155
     pitch: 1
-    randomPitch: 0.0494
+    randomPitch: 0.2
   - soundName: Damage_1
     audioClip: {fileID: 8300000, guid: bcbb8718624590d41ac0a20a97d69783, type: 3}
     volume: 0.409
@@ -99,3 +99,9 @@ MonoBehaviour:
     randomVolume: 0.155
     pitch: 0.743
     randomPitch: 0.045
+  - soundName: PlayerJump
+    audioClip: {fileID: 8300000, guid: b39b24cf8183a44458eb671874be27b3, type: 3}
+    volume: 1
+    randomVolume: 0.155
+    pitch: 0.551
+    randomPitch: 0.0574

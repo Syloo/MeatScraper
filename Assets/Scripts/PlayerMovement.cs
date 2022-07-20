@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
     private bool isPlayingWalkSound = false;
+    private SoundManager sM;
     
     // Start is called before the first frame update
     private void Start()
@@ -49,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = Camera.main.transform;
         rb = GetComponent<Rigidbody2D>();
         velocityX = 0f;
+        sM = SoundManager.instance; ;
 
         GameManager.getInstance().setPlayer(this);
     }
@@ -145,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
             isJumpPressed = false;
             if (isGrounded)
             {
+                sM.PlaySound("PlayerJump");
                 isJumping = 0.5f;
                 velocityY = jumpVelocity;
             }

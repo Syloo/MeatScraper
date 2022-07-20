@@ -61,6 +61,10 @@ public class EnemySimple : MonoBehaviour
 
             rb.velocity = new Vector2(velocityX, rb.velocity.y);
         }
+        else
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
         
     }
 
