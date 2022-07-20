@@ -54,6 +54,12 @@ MonoBehaviour:
   isForceMoreDistributed: 1
   speed: 20
   explosionEffect: {fileID: 3619079434680420950, guid: 09a4facb5063c30409bdb84bb8c67a5a, type: 3}
+  projectileSprites:
+  - {fileID: 21300000, guid: a1141c1ebaaa3c64fb27a37c995fd63a, type: 3}
+  - {fileID: 21300000, guid: 90854f39e7c431e4eab1525df52a3d06, type: 3}
+  - {fileID: 21300000, guid: 19649a8f335528d47822b6f95605bfb6, type: 3}
+  - {fileID: 21300000, guid: accd8bf089b8f7d4c94c1fafcb9ef181, type: 3}
+  selfSprite: {fileID: 6564523991830660448}
 --- !u!212 &6564523991830660448
 SpriteRenderer:
   m_ObjectHideFlags: 0

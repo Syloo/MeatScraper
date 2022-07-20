@@ -16,10 +16,20 @@ public class Projectile : MonoBehaviour
     private bool hasTriggered;
     private Rigidbody2D playerRB;
 
+    [SerializeField]
+    private Sprite[] projectileSprites;
+    [SerializeField]
+    private SpriteRenderer selfSprite;
+
 
     // Start is called before the first frame update
     private void Start()
     {
+
+        int projectileID = Random.Range(0, projectileSprites.Length);
+        selfSprite.sprite = projectileSprites[projectileID];
+
+
         hasTriggered = false;
         playerRB = GameManager.getInstance().getPlayerRB();
         GetComponent<Rigidbody2D>().velocity = playerRB.velocity + speed * (Vector2) transform.right;
