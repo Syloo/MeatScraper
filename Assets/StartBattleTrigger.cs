@@ -17,6 +17,9 @@ public class StartBattleTrigger : MonoBehaviour
     [SerializeField]
     private GameObject[] gates;
 
+    [SerializeField]
+    private BossManager bM;
+
     private float setTimer = .6f;
     private float time;
     private int i;
@@ -36,6 +39,7 @@ public class StartBattleTrigger : MonoBehaviour
             music.clip = bosstheme;
             music.Play();
             makeGate = true;
+            bM.startFight = true;
 
         }
     }
