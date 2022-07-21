@@ -30,6 +30,8 @@ public class EnemyBoss : MonoBehaviour
     private SoundManager sM;
     private PropertySpawner spawner;
 
+    public AudioSource music;
+
     public void startFight()
     {
         healthBar.SetActive(true);
@@ -73,6 +75,7 @@ public class EnemyBoss : MonoBehaviour
 
             if (health <= 0f)
             {
+                music.Stop();
                 isDead = true;
                 animator.SetBool("isDead", true);
                 int randomID = Random.Range(1, 3);

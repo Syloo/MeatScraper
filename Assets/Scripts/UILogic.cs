@@ -102,6 +102,7 @@ public class UILogic : MonoBehaviour
     {
         menuUI.SetActive(false);
         menuActive = false;
+        playerShooting.shootPossible = true;
         Time.timeScale = 1f;
     }
 
