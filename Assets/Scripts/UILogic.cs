@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UILogic : MonoBehaviour
@@ -17,6 +18,12 @@ public class UILogic : MonoBehaviour
     private Color heatProgressColor;
     [SerializeField]
     private Color overheatColor;
+    [SerializeField]
+    private GameObject menuUI;
+    [SerializeField]
+    private PlayerShooting playerShooting;
+
+    private bool menuActive = false;
 
     public void setHeatTo(float fraction)
     {
@@ -51,6 +58,7 @@ public class UILogic : MonoBehaviour
         setHeatTo(0f);
         heatMeter.SetActive(false);
         GameManager.getInstance().MainUI = this;
+        menuUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,5 +66,54 @@ public class UILogic : MonoBehaviour
     {
         // Crosshair placement
         crosshair.position = Input.mousePosition;
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+
+            if(!menuActive)
+            {
+                AppearMenu();
+
+            }
+            else if(menuActive)
+            {
+                DisAppearMenu();
+            }
+
+
+        }
+    }
+
+    public void ReloadCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        menuUI.SetActive(false);
+        menuActive = false;
+        Time.timeScale = 1f;
+
+    }
+
+    public void Continue()
+    {
+        menuUI.SetActive(false);
+        menuActive = false;
+        Time.timeScale = 1f;
+    }
+
+    private void AppearMenu()
+    {
+        playerShooting.shootPossible = false;
+        menuUI.SetActive(true);
+        menuActive = true;
+        Time.timeScale = 0f;
+        
+    }
+    private void DisAppearMenu()
+    {
+        menuUI.SetActive(false);
+        menuActive = false;
+        Time.timeScale = 1f;
+        playerShooting.shootPossible = true;
+
     }
 }

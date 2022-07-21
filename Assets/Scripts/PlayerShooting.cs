@@ -17,6 +17,7 @@ public class PlayerShooting : MonoBehaviour
     private float heat;
     private Camera mainCamera;
     private float nextShotReadyTime;
+    public bool shootPossible = true;
 
     private SoundManager soundManager;
 
@@ -43,7 +44,7 @@ public class PlayerShooting : MonoBehaviour
 
         // Shooting
         heat = Mathf.Max(0f, heat - Time.deltaTime / cooldownAfterOverheat);
-        if (Input.GetButtonDown("Fire1") && Time.time - nextShotReadyTime >= 0f)
+        if (Input.GetButtonDown("Fire1") && Time.time - nextShotReadyTime >= 0f && shootPossible)
         {
             Cursor.visible = false;
             heat += heatPerShot;
