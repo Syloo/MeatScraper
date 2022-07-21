@@ -92,6 +92,7 @@ public class UILogic : MonoBehaviour
     public void ReloadCurrentScene()
     {
         Cursor.visible = false;
+        GameManager.getInstance().resetHealth();
         SceneManager.LoadScene("MainManu");
         menuUI.SetActive(false);
         menuActive = false;

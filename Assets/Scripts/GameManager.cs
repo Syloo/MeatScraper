@@ -67,8 +67,10 @@ public class GameManager
         this.player = player;
         playerCollider = player.GetComponent<Collider2D>();
         playerRB = player.GetComponent<Rigidbody2D>();
+
         hearts = GameObject.FindGameObjectsWithTag("Heart");
-        //Debug.Log(hearts.Length);
+        if (playerHealth < 3) hearts[2].SetActive(false);
+        if (playerHealth < 2) hearts[1].SetActive(false);
     }
 
     public void setPlayerRagdolls()
@@ -115,11 +117,16 @@ public class GameManager
         {
             Debug.Log("Player is DEAD!");
             invincibilityEndTime += player.dyingTime;
-            playerHealth = PLAYER_MAX_HEALTH;
+            resetHealth();
             player.animator.SetBool("isDying", true);
             player.isAlive = false;
             //SceneManager.LoadScene("MainManu");
             return true;
         }
+    }
+
+    public void resetHealth()
+    {
+        playerHealth = PLAYER_MAX_HEALTH;
     }
 }
