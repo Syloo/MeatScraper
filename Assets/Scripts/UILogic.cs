@@ -23,6 +23,9 @@ public class UILogic : MonoBehaviour
     [SerializeField]
     private PlayerShooting playerShooting;
 
+    public float moveSpeed = 5f;
+    public GameObject eye;
+
     private bool menuActive = false;
 
     public void setHeatTo(float fraction)
@@ -82,6 +85,8 @@ public class UILogic : MonoBehaviour
 
 
         }
+
+        
     }
 
     public void ReloadCurrentScene()
