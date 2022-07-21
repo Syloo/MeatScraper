@@ -77,15 +77,9 @@ public class EnemySimple : MonoBehaviour
             animator.SetBool("enemyDead", true);
             int randomID = Random.Range(1, 3);
             sM.PlaySound("EnemyDie_" + randomID);
-            Invoke("ReallyDie", 3f);
+
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().isKinematic = true;
         }
-    }
-
-    private void ReallyDie()
-    {
-
-        Destroy(gameObject);
-
-
     }
 }

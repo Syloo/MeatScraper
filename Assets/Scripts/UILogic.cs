@@ -21,7 +21,7 @@ public class UILogic : MonoBehaviour
     public void setHeatTo(float fraction)
     {
         float oldProgress = heatProgress.sizeDelta.x;
-        heatProgress.sizeDelta = new Vector2(480f * fraction, heatProgress.sizeDelta.y);
+        heatProgress.sizeDelta = new Vector2(466f * fraction, heatProgress.sizeDelta.y);
 
         if (oldProgress > 0f && fraction == 0f)
         {

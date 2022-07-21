@@ -5,28 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class GameManager
 {
-    public int playerHealth = 3;
-    public float playerInvincibilityDuration = 1.5f;
-
     private static GameManager instance = null;
 
-    private float invincibilityEndTime;
+    private const float PLAYER_INVINCIBILITY_DURATION = 2f;
+    private const int PLAYER_MAX_HEALTH = 3;
+
     private PlayerMovement player;
     private Collider2D playerCollider;
-    private int playerMaxHealth;
+    private int playerHealth;
     private Rigidbody2D playerRB;
 
-    private SoundManager soundManager = SoundManager.instance;
-
     private GameObject[] hearts;
-
-  
+    private float invincibilityEndTime;
+    private SoundManager soundManager;
 
     private GameManager()
     {
-
         invincibilityEndTime = 0f;
-        playerMaxHealth = playerHealth;
+        playerHealth = PLAYER_MAX_HEALTH;
+        soundManager = SoundManager.instance;
     }
 
     public static GameManager getInstance()
@@ -82,11 +79,11 @@ public class GameManager
     public void FillUpLife(int life)
     {
 
-        if(playerHealth + life <= playerMaxHealth)
+        if (playerHealth + life <= PLAYER_MAX_HEALTH)
         {
 
             playerHealth += life;
-            for(int i = 0; i < playerHealth; i++)
+            for (int i = 0; i < playerHealth; i++)
             {
 
                 hearts[i].SetActive(true);
@@ -103,7 +100,7 @@ public class GameManager
     {
         if (isPlayerInvincible()) return !player.isAlive;
 
-        invincibilityEndTime = Time.time + playerInvincibilityDuration;
+        invincibilityEndTime = Time.time + PLAYER_INVINCIBILITY_DURATION;
         playerHealth -= amount;
         if (playerHealth >= 0 && playerHealth < hearts.Length) hearts[playerHealth].SetActive(false);
         int randomDamageID = Random.Range(1,5);
@@ -111,19 +108,18 @@ public class GameManager
 
         if (playerHealth > 0f)
         {
-            player.playInvincibleAnimationFor(playerInvincibilityDuration);
+            player.playInvincibleAnimationFor(PLAYER_INVINCIBILITY_DURATION);
             return false;
         }
         else
         {
             Debug.Log("Player is DEAD!");
             invincibilityEndTime += player.dyingTime;
-            playerHealth = playerMaxHealth;
+            playerHealth = PLAYER_MAX_HEALTH;
             player.animator.SetBool("isDying", true);
             player.isAlive = false;
             //SceneManager.LoadScene("MainManu");
             return true;
         }
-
     }
 }

@@ -47,7 +47,7 @@ public class PropertyHurtfull : MonoBehaviour
 
     private void handleTouch(Vector2 contactNormal)
     {
-        if (Time.time > lastTouch + 0.1f)
+        if (isActiveAndEnabled && Time.time > lastTouch + 0.1f)
         {
             lastTouch = Time.time;
             GameManager gm = GameManager.getInstance();
