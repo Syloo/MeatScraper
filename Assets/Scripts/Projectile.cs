@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
     // Projectile did hit something
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" || hasTriggered) return; // Ignore collisions with player
+        if (other.tag == "Player" || other.isTrigger || hasTriggered) return; // Ignore collisions with players and triggers
         hasTriggered = true;
 
         Collider2D playerCollider = GameManager.getInstance().getPlayerCollider();

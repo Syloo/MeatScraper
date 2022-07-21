@@ -8,6 +8,7 @@ TagManager:
   - Heart
   - Transition
   - Heartcontainer
+  - Boss
   layers:
   - Default
   - TransparentFX

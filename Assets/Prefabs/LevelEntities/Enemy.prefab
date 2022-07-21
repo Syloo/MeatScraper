@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  walkDistance: 1
+  walkDistance: 10
   enemyModel: {fileID: 4053838526808205371}
 --- !u!114 &1020547485909985899
 MonoBehaviour:
