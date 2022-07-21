@@ -92,7 +92,7 @@ public class UILogic : MonoBehaviour
     public void ReloadCurrentScene()
     {
         Cursor.visible = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("MainManu");
         menuUI.SetActive(false);
         menuActive = false;
         Time.timeScale = 1f;
