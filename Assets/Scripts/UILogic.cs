@@ -91,6 +91,7 @@ public class UILogic : MonoBehaviour
 
     public void ReloadCurrentScene()
     {
+        Cursor.visible = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         menuUI.SetActive(false);
         menuActive = false;
@@ -100,6 +101,7 @@ public class UILogic : MonoBehaviour
 
     public void Continue()
     {
+        Cursor.visible = false;
         menuUI.SetActive(false);
         menuActive = false;
         playerShooting.shootPossible = true;
@@ -108,6 +110,7 @@ public class UILogic : MonoBehaviour
 
     private void AppearMenu()
     {
+        Cursor.visible = true;
         playerShooting.shootPossible = false;
         menuUI.SetActive(true);
         menuActive = true;
@@ -116,6 +119,7 @@ public class UILogic : MonoBehaviour
     }
     private void DisAppearMenu()
     {
+        Cursor.visible = false;
         menuUI.SetActive(false);
         menuActive = false;
         Time.timeScale = 1f;
